@@ -2,7 +2,6 @@ package main
 
 import (
 	"math/rand"
-	"time"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -156,14 +155,11 @@ func (w *World) Render() {
 }
 
 func main() {
-	// Initialize random seed
-	rand.Seed(time.Now().UnixNano())
-
 	// Initialize window
 	rl.InitWindow(screenWidth, screenHeight, "ASCII World Generator")
 	rl.SetTargetFPS(60)
 
-	// Create initial world
+	// Create initial world (using auto-seeded global random source in Go 1.20+)
 	world := NewWorld(worldWidth, worldHeight)
 
 	// Main game loop
